@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Crystal Game</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+    <!--Creates Bootstrap Grid-->
+    <div class="container">
+    <h1 id="game-title">"Crystal Game"</h1>
+    <h2 id="game-rules">click stuff and it happens</h2>
+    <h3 id="target-total">Target:</h3>
+    <h3 id="player-total">Player Total: </h3>
+
+    </div>
+    <!--Creates div for crystal buttons-->
+    <div class="crystals-area">
+        <button id="amethyst" class="amethyst"><span>A</span></button>
+        <button id="blue-topaz" class="blue-topaz"><span>BT</span></button>
+        <button id="peridot" class="peridot"><span>P</span></button>
+        <button id="ruby" class="ruby"><span>R</span></button>
+
+    </div>
+    <!--Javascript-->
+    <script type="text/javascript">
+    
+    //initialize variables for the game
+    var targetTtl = (Math.floor(Math.random() * (120-19+1)) +19);
+    var playerTtl = 0;
+    var amethystVal = (Math.floor(Math.random() * 12) +1);
+    var blueTopazVal = (Math.floor(Math.random() * 12) +1);
+    var peridotVal = (Math.floor(Math.random() * 12) +1);
+    var rubyVal = (Math.floor(Math.random() * 12) +1);
+    //console.log("Amethyst total: " + amethystVal);
+    
+    
+    //Create variables to dipslay text
+    $("#target-total").text("Target: " + targetTtl);
+
+    //Check for button click
+    $("button").on("click", function(){
+        if (playerTtl === targetTtl) {
+            alert("you win!");
+        } else if (playerTtl > targetTtl) {
+            alert("you lose!");
+        } else {
+            if ($(this).hasClass("amethyst")) {
+                playerTtl = playerTtl + amethystVal;
+                $("#player-total").text("Player Total: " + playerTtl);
+                //console.log("amethyst was clicked!");
+            } else if ($(this).hasClass("blue-topaz")) {
+                playerTtl = playerTtl + blueTopazVal;
+                $("#player-total").text("Player Total: " + playerTtl);
+                //console.log("blue topaz was clicked!");
+            } else if ($(this).hasClass("peridot")) {
+                playerTtl = playerTtl + peridotVal;
+                $("#player-total").text("Player Total: " + playerTtl);
+                //console.log("peridot was clicked!");
+            } else {
+                playerTtl = playerTtl + rubyVal;
+                $("#player-total").text("Player Total: " + playerTtl);
+                //console.log("ruby was clicked!");
+            } 
+        }
+
+
+
+    })
+    
+    
+    
+    
+    
+    </script>
+    
+</body>
+</html>
